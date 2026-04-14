@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package com.example.smartcampus.model;
+package com.example.smartcampusapi.model;
 
 import java.util.ArrayList;
 import java.util.List;
