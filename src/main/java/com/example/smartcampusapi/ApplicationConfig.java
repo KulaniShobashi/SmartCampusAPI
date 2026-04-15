@@ -4,8 +4,8 @@
  */
 package com.example.smartcampus;
 
+import com.example.smartcampusapi.exception.mapper.RoomNotEmptyExceptionMapper;
 import com.example.smartcampusapi.resources.SensorResource;
-import com.example.smartcampus.exception.mapper.*;
 import com.example.smartcampus.filter.LoggingFilter;
 import com.example.smartcampus.resource.*;
 import javax.ws.rs.ApplicationPath;
