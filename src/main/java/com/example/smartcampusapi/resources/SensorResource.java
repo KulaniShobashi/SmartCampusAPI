@@ -1,57 +1,46 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-/**
- *
- * @author kulanitennakoon
- */
 package com.example.smartcampusapi.resources;
 
-import com.example.smartcampus.exception.LinkedResourceNotFoundException;
-import com.example.smartcampus.model.Sensor;
-import com.example.smartcampus.store.CampusDataStore;
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import java.util.ArrayList;
+import com.example.smartcampusapi.exception.LinkedResourceNotFoundException;
+import com.example.smartcampusapi.model.Sensor;
+import com.example.smartcampusapi.store.CampusDataStore;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Path("sensors")
+@Path("/sensors")
 public class SensorResource {
 
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getAllSensors(@QueryParam("type") String type) {
-        List<Sensor> list = new ArrayList<>(CampusDataStore.getSensors().values());
-        if (type == null || type.isEmpty()) {
-            return Response.ok(list).build();
-        }
-        List<Sensor> filtered = list.stream()
-                .filter(s -> type.equalsIgnoreCase(s.getType()))
-                .collect(Collectors.toList());
-        return Response.ok(filtered).build();
-    }
+    private final CampusDataStore store = CampusDataStore.getInstance();
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response createSensor(Sensor sensor) {
-        if (!CampusDataStore.getRooms().containsKey(sensor.getRoomId())) {
-            throw new LinkedResourceNotFoundException("Room with id " + sensor.getRoomId() + " does not exist.");
+        if (store.getRoom(sensor.getRoomId()) == null) {
+            throw new LinkedResourceNotFoundException("Room " + sensor.getRoomId() + " does not exist");
         }
-        if (sensor.getId() == null || sensor.getId().isEmpty()) {
-            sensor.setId("SENS-" + System.currentTimeMillis());
-        }
-        if (sensor.getStatus() == null) sensor.setStatus("ACTIVE");
-        CampusDataStore.addSensor(sensor);
-        return Response.status(Response.Status.CREATED).entity(sensor).build();
+        store.addSensor(sensor);
+        // Add sensorId to room
+        store.getRoom(sensor.getRoomId()).addSensorId(sensor.getId());
+        return Response.status(201).entity(sensor).build();
     }
 
-    @Path("{sensorId}/readings")
-    public SensorReadingResource getReadingsResource(@PathParam("sensorId") String sensorId) {
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getSensors(@QueryParam("type") String type) {
+        var sensors = store.getAllSensors().values();
+        if (type != null && !type.isBlank()) {
+            sensors = sensors.stream()
+                    .filter(s -> s.getType().equalsIgnoreCase(type))
+                    .collect(Collectors.toList());
+        }
+        return Response.ok(sensors).build();
+    }
+
+    @Path("/{sensorId}/readings")
+    public SensorReadingResource getReadings(@PathParam("sensorId") String sensorId) {
         return new SensorReadingResource(sensorId);
     }
 }
