@@ -4,16 +4,10 @@
  */
 package com.example.smartcampusapi.resources;
 
-/**
- *
- * @author kulanitennakoon
- */
-package com.example.smartcampus.resource;
-
-import com.example.smartcampus.exception.SensorUnavailableException;
-import com.example.smartcampus.model.Sensor;
-import com.example.smartcampus.model.SensorReading;
-import com.example.smartcampus.store.CampusDataStore;
+import com.example.smartcampusapi.exception.SensorUnavailableException;
+import com.example.smartcampusapi.model.Sensor;
+import com.example.smartcampusapi.model.SensorReading;
+import com.example.smartcampusapi.store.CampusDataStore;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -44,8 +38,12 @@ public class SensorReadingResource {
         if ("MAINTENANCE".equals(sensor.getStatus())) {
             throw new SensorUnavailableException("Sensor " + sensorId + " is in maintenance and cannot accept new readings.");
         }
-        if (reading.getId() == null) reading.setId(UUID.randomUUID().toString());
-        if (reading.getTimestamp() == 0) reading.setTimestamp(System.currentTimeMillis());
+        if (reading.getId() == null) {
+            reading.setId(UUID.randomUUID().toString());
+        }
+        if (reading.getTimestamp() == 0) {
+            reading.setTimestamp(System.currentTimeMillis());
+        }
 
         CampusDataStore.addReading(sensorId, reading);
         CampusDataStore.updateSensorValue(sensorId, reading.getValue());
