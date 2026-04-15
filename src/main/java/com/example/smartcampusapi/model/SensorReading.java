@@ -1,22 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package com.example.smartcampus.model;
-
-import java.util.UUID;
+package com.example.smartcampusapi.model;
 
 public class SensorReading {
     private String id;
     private long timestamp;
     private double value;
 
-    public SensorReading() {
-        this.id = UUID.randomUUID().toString();
-        this.timestamp = System.currentTimeMillis();
-    }
-    public SensorReading(double value) {
-        this();
+    public SensorReading() {}
+    public SensorReading(String id, long timestamp, double value) {
+        this.id = id;
+        this.timestamp = timestamp;
         this.value = value;
     }
 
