@@ -9,7 +9,7 @@
  */
 package com.example.smartcampusapi.exception.mapper;
 
-import com.example.smartcampus.exception.RoomNotEmptyException;
+import com.example.smartcampusapi.exception.RoomNotEmptyException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
