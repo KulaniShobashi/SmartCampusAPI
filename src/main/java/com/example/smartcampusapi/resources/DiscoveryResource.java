@@ -1,0 +1,29 @@
+package com.example.smartcampusapi.resources;
+
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+import java.util.HashMap;
+import java.util.Map;
+
+@Path("/")
+public class DiscoveryResource {
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response discover() {
+        Map<String, Object> metadata = new HashMap<>();
+        metadata.put("version", "1.0");
+        metadata.put("contact", "facilities@westminster.ac.uk");
+        metadata.put("title", "Smart Campus API");
+
+        Map<String, String> links = new HashMap<>();
+        links.put("rooms", "/api/v1/rooms");
+        links.put("sensors", "/api/v1/sensors");
+        metadata.put("links", links);
+
+        return Response.ok(metadata).build();
+    }
+}
