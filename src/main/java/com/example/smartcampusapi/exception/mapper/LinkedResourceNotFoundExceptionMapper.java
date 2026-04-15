@@ -7,7 +7,7 @@
  *
  * @author kulanitennakoon
  */
-package com.example.smartcampus.exception.mapper;
+package com.example.smartcampusapi.exception.mapper;
 
 import com.example.smartcampus.exception.LinkedResourceNotFoundException;
 import javax.ws.rs.core.MediaType;
