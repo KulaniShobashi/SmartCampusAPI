@@ -9,19 +9,10 @@
  * @author kulanitennakoon
  */
 // RoomNotEmptyException.java
-package com.example.smartcampus.exception;
+package com.example.smartcampusapi.exception;
+
 public class RoomNotEmptyException extends RuntimeException {
-    public RoomNotEmptyException(String message) { super(message); }
-}
-
-// LinkedResourceNotFoundException.java
-package com.example.smartcampus.exception;
-public class LinkedResourceNotFoundException extends RuntimeException {
-    public LinkedResourceNotFoundException(String message) { super(message); }
-}
-
-// SensorUnavailableException.java
-package com.example.smartcampus.exception;
-public class SensorUnavailableException extends RuntimeException {
-    public SensorUnavailableException(String message) { super(message); }
+    public RoomNotEmptyException(String message) {
+        super(message);
+    }
 }
