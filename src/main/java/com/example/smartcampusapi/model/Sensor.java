@@ -1,20 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package com.example.smartcampus.model;
+package com.example.smartcampusapi.model;
 
 public class Sensor {
     private String id;
     private String type;
-    private String status;
+    private String status; // ACTIVE, MAINTENANCE, OFFLINE
     private double currentValue;
     private String roomId;
 
     public Sensor() {}
-    public Sensor(String id, String type, String status, String roomId, double currentValue) {
-        this.id = id; this.type = type; this.status = status;
-        this.roomId = roomId; this.currentValue = currentValue;
+    public Sensor(String id, String type, String status, String roomId) {
+        this.id = id;
+        this.type = type;
+        this.status = status;
+        this.roomId = roomId;
     }
 
     // Getters & Setters
