@@ -4,6 +4,7 @@
  */
 package com.example.smartcampus;
 
+import com.example.smartcampusapi.resources.SensorResource;
 import com.example.smartcampus.exception.mapper.*;
 import com.example.smartcampus.filter.LoggingFilter;
 import com.example.smartcampus.resource.*;

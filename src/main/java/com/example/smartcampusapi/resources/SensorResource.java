@@ -7,7 +7,7 @@
  *
  * @author kulanitennakoon
  */
-package com.example.smartcampus.resource;
+package com.example.smartcampusapi.resources;
 
 import com.example.smartcampus.exception.LinkedResourceNotFoundException;
 import com.example.smartcampus.model.Sensor;
