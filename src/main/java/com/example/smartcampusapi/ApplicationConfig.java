@@ -1,15 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package com.example.smartcampus;
+package com.example.smartcampusapi;
 
-import com.example.smartcampusapi.exception.mapper.RoomNotEmptyExceptionMapper;
-import com.example.smartcampusapi.resources.SensorResource;
-import com.example.smartcampus.filter.LoggingFilter;
-import com.example.smartcampus.resource.*;
-import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.Application;
+import com.example.smartcampusapi.exception.mapper.*;
+import com.example.smartcampusapi.filter.LoggingFilter;
+import com.example.smartcampusapi.resources.*;
+import jakarta.ws.rs.ApplicationPath;
+import jakarta.ws.rs.core.Application;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,11 +16,17 @@ public class ApplicationConfig extends Application {
         classes.add(DiscoveryResource.class);
         classes.add(RoomResource.class);
         classes.add(SensorResource.class);
+        classes.add(SensorReadingResource.class);
+
+        // Mappers
         classes.add(RoomNotEmptyExceptionMapper.class);
         classes.add(LinkedResourceNotFoundExceptionMapper.class);
         classes.add(SensorUnavailableExceptionMapper.class);
         classes.add(GenericExceptionMapper.class);
+
+        // Filter
         classes.add(LoggingFilter.class);
         return classes;
     }
+}
 }
