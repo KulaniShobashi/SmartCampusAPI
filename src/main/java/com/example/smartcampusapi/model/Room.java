@@ -16,7 +16,9 @@ public class Room {
 
     public Room() {}
     public Room(String id, String name, int capacity) {
-        this.id = id; this.name = name; this.capacity = capacity;
+        this.id = id;
+        this.name = name;
+        this.capacity = capacity;
     }
 
     // Getters & Setters
@@ -28,4 +30,6 @@ public class Room {
     public void setCapacity(int capacity) { this.capacity = capacity; }
     public List<String> getSensorIds() { return sensorIds; }
     public void setSensorIds(List<String> sensorIds) { this.sensorIds = sensorIds; }
+    public void addSensorId(String sensorId) { this.sensorIds.add(sensorId); }
+    public void removeSensorId(String sensorId) { this.sensorIds.remove(sensorId); }
 }
