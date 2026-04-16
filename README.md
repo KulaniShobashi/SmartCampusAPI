@@ -4,7 +4,7 @@
 **Student:** Kulani Tennakoon  
 **Date:** 24 th April 2026  
 
-**GitHub Repository:** [Add your GitHub link here]
+**GitHub Repository:** (https://github.com/KulaniShobashi/SmartCampusAPI.git)
 
 ---
 
