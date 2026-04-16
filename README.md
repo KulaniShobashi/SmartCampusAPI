@@ -21,6 +21,10 @@ This is a fully functional RESTful API built with **JAX-RS (Jakarta RESTful Web 
 ```bash
 cd Smart_Campus_API
 mvn clean package
+```
+
+---
+
 
 ## 3. Answers to Lecturer Questions
 # Part 1: Service Architecture & Setup
