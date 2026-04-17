@@ -3,8 +3,8 @@ package com.example.smartcampusapi;
 import com.example.smartcampusapi.exception.mapper.*;
 import com.example.smartcampusapi.filter.LoggingFilter;
 import com.example.smartcampusapi.resources.*;
-import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.Application;
+import jakarta.ws.rs.ApplicationPath;
+import jakarta.ws.rs.core.Application;
 import java.util.HashSet;
 import java.util.Set;
 
